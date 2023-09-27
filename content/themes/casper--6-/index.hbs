@@ -1,0 +1,170 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
+
+    {{#if @custom.show_publication_cover}}
+        {{#if @site.cover_image}}
+            {{!-- This is a responsive image, it loads different sizes depending on device
+            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+            <img class="site-header-cover"
+                srcset="{{img_url @site.cover_image size="s"}} 300w,
+                        {{img_url @site.cover_image size="m"}} 600w,
+                        {{img_url @site.cover_image size="l"}} 1000w,
+                        {{img_url @site.cover_image size="xl"}} 2000w"
+                sizes="100vw"
+                src="{{img_url @site.cover_image size="xl"}}"
+                alt="{{@site.title}}"
+            />
+        {{/if}}
+    {{/if}}
+
+    {{#match @custom.header_style "!=" "Hidden"}}
+        <div class="site-header-inner inner">
+            {{#match @custom.navigation_layout "Logo on cover"}}
+                {{#if @site.logo}}
+                    <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+                {{else}}
+                    <h1 class="site-title">{{@site.title}}</h1>
+                {{/if}}
+            {{/match}}
+            {{#if @site.description}}
+                <p class="site-description">{{@site.description}}</p>
+            {{/if}}
+        </div>
+    {{/match}}
+
+</div>
+
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+<section class="HomeTop">
+   <div class="post-feed">
+    <div class="feed-title"> 
+    <h2> What's happening? </h2>
+    <!--<a href="/about" class="button-standard button-standard--black button-standard--small whats-happening__cta"><span>See more</span></a> -->
+
+        
+        
+        </div>
+    <div class="feed-content">
+    {{#get "posts" filter="tags:news" limit="1" include="tags,authors" as | posts |}} <!-- Get the older posts, you can filter tags here -->
+        {{#foreach posts}}
+                <div class="featured-post">
+                    {{> "post-card"}} <!-- Use the post-card partial for the featured post -->
+                </div>
+                {{!-- Do nothing for the older posts here --}}
+        {{/foreach}}
+                {{/get}}
+
+    
+    <div class="older-posts">
+    {{#get "posts" filter="tags:news" limit="4" include="tags,authors" as | posts |}} <!-- Get the older posts, you can filter tags here -->
+        {{#foreach posts}}
+            {{#unless @first}} <!-- Exclude the featured post -->
+                <div class="small-post">
+                    {{> "post-card"}} <!-- Use the post-card partial for older posts -->
+                </div>
+            {{/unless}}
+        {{/foreach}}
+        {{/get}}
+    </div>
+</div> <!-- /.feed-content -->
+</div> <!-- /.post-feed -->
+</section>
+
+
+<!-- Display game-related posts -->
+<section class="products-section">
+        <div class="game-feed">
+                <div class="feed-title">     <h2> Featured Games </h2> </div>
+        <div class="feed-content-grid-view"> 
+            <!-- Display products here -->
+
+<!-- Food Fighters Card -->
+    <article class="game-card">
+    <a class="post-card-image-link" href="{{url}}">
+        <div class="post-card-image" style="background-image: url(./assets/images/food\ fighters.jpg);">
+             <div class="overlay">
+                <h2 class="game-title">Food Fighters</h2>
+            </div>
+        </div>
+        </a>
+    </article>
+
+<!-- Taxi Tales -->
+     <article class="game-card">
+    <a class="post-card-image-link" href="{{url}}">
+        <div class="post-card-image" style="background-image: url(./assets/images/ubersplease.png);">
+ <div class="overlay">
+                <h2 class="game-title">Taxi Tales</h2>
+            </div>
+        </div>
+        </a>
+    </article>
+
+    <!-- 091123 -->
+     <article class="game-card">
+    <a class="post-card-image-link" href="{{url}}">
+        <div class="post-card-image" style="background-image: url(./assets/images/091123.jpg);">
+             <div class="overlay">
+                <h2 class="game-title">091123</h2>
+            </div>
+        </div>
+        </a>
+    </article>
+        </div> <!-- /.feed-content -->
+        
+    <div class="feed-title-mg-top-30">     <h2> Game News </h2> </div>
+        <div class="feed-content-grid-view-limit-2">
+            <!-- Display two posts here -->
+                {{#get "posts" filter="tags:games" limit="4" }} <!-- Get the older posts, you can filter tags here -->
+        {{#foreach posts}}
+                <div class="small-post">
+                    {{> "post-card"}} <!-- Use the post-card partial for older posts -->
+                </div>
+        {{/foreach}}
+        {{/get}}
+
+
+
+            </div>
+        </div> <!-- /.game-feed -->
+        </section>
+
+<!-- Education Section -->
+<section class="education-section">
+            <div class="education-content">
+                <div class="inner-content">
+                    <div class="feed-title"> <h2> Want to learn game development? </h2> </div>
+                    <p> Jumpstart your career in game development by taking our self-paced learning courses! </p>
+                    <a href="https://www.linkedin.com/company/hexfork/" class="button-standard--black"><span>  Learn More </span></a>
+                </div>
+            </div>
+
+            <a class="education-img">
+                    <img src="./assets/images/game_img.png" alt="Education Image"></img>
+            </a>
+        </section>
+
+
+        <!-- Hiring Section -->
+        <section class="hiring-section">
+                    <div class="hiring-content">
+                        <div class="inner-content">
+                        <div class="feed-title"> <h2> Jobs </h2> </div>
+                        <p> Hexfork is a community of game developers who are passionate about creating games. We are here to help you learn and grow as a game developer.</p>
+                        <a href="https://www.linkedin.com/company/hexfork/" class="button-standard--black"><span>Explore Careers</span></a>
+                        </div>
+                    </div>
+                    <div class="hiring-img">
+                        <img src="./assets/images/hiring-banner-4.png" alt="Hiring Image"></img>
+                    </div>
+        </section>
+
+        
+
+    {{pagination}}
+
+</main>
