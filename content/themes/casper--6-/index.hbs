@@ -120,11 +120,17 @@ into the {body} of the default.hbs template --}}
         <div class="feed-content-grid-view-limit-2">
             <!-- Display two posts here -->
                 {{#get "posts" filter="tags:games" limit="4" }} <!-- Get the older posts, you can filter tags here -->
-        {{#foreach posts}}
+                {{#if posts}}
+                {{#foreach posts}}
                 <div class="small-post">
                     {{> "post-card"}} <!-- Use the post-card partial for older posts -->
                 </div>
-        {{/foreach}}
+                {{/foreach}}
+                {{else}}
+                <div class="no-posts">
+                    <p class="error-msg">There are no posts here yet.</p>
+                </div>
+                {{/if}}
         {{/get}}
 
 
@@ -138,13 +144,13 @@ into the {body} of the default.hbs template --}}
             <div class="education-content">
                 <div class="inner-content">
                     <div class="feed-title"> <h2> Want to learn game development? </h2> </div>
-                    <p> Jumpstart your career in game development by taking our self-paced learning courses! </p>
-                    <a href="https://www.linkedin.com/company/hexfork/" class="button-standard--black"><span>  Learn More </span></a>
+                    <p class="msg-gray"> Jumpstart your career in game development by taking our self-paced learning courses! </p>
+                    <a href="https://learn.hexfork.org/" class="button-standard--white"><span>  Learn More </span></a>
                 </div>
             </div>
 
             <a class="education-img">
-                    <img src="./assets/images/game_img.png" alt="Education Image"></img>
+                    <img src="./assets/images/game_img1.png" alt="Education Image"></img>
             </a>
         </section>
 

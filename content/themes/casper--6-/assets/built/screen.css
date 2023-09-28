@@ -1117,8 +1117,16 @@ svg {
   grid-column: span 2;
   position: relative;
   word-break: break-word;
+}
+
+.dynamic {
   background-color: #242323;
 }
+
+.post-card-large {
+  background-color: #242323;
+}
+
 .post-card-image-link {
   display: block;
   margin-bottom: 32px;
@@ -3348,6 +3356,7 @@ html.dark-mode .kg-header-card h3.kg-header-card-subheader {
 
 .education-section {
   display: flex;
+  background-color: rgb(27, 27, 27);
 }
 
 .education-content {
@@ -3361,12 +3370,9 @@ html.dark-mode .kg-header-card h3.kg-header-card-subheader {
   background-color: rgb(27, 27, 27);
 }
 
-.education-section h2 {
-  color: white;
-}
-
-.education-section p {
-  color: white;
+.error-msg {
+  color: rgb(183, 179, 179);
+  font-size: 3rem;
 }
 
 .hiring-feed {
@@ -3402,8 +3408,8 @@ html.dark-mode .kg-header-card h3.kg-header-card-subheader {
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-  clip-path: polygon(35% 100%, 100% 100%, 100% 0, 0 0);
+  -webkit-clip-path: polygon(25% 100%, 100% 100%, 100% 0, 0 0);
+  clip-path: polygon(25% 100%, 100% 100%, 100% 0, 0 0);
   background-size: cover;
   background-position: center;
   background-color: darkgray !important; /* Replace 'your-color' with the desired color */
@@ -3467,4 +3473,32 @@ html.dark-mode .kg-header-card h3.kg-header-card-subheader {
   background-color: #202020;
   color: white;
   transition: 0.5s;
+}
+
+.button-standard--white {
+  font-size: 2rem;
+  border-radius: 6.5px;
+  padding: 1.75rem 2rem;
+  min-width: auto;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  background-color: #7c7c7c;
+  color: rgb(255, 255, 255);
+  width: 100px;
+}
+
+.button-standard--white:hover {
+  background-color: #7c7c7c;
+  color: rgb(230, 226, 226);
+  transition: 0.5s;
+}
+
+.msg-gray {
+  color: grey;
+}
+
+.education-section h2 {
+  color: white;
 }
